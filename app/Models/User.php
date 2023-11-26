@@ -12,6 +12,9 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    const TYPE_ADMIN = 'admin';
+    const TYPE_CUSTOMER = 'customer';
+
     /**
      * The attributes that are mass assignable.
      *
@@ -21,6 +24,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'code',
+        'phone_number',
+        'address',
     ];
 
     /**
@@ -42,4 +48,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function scopeAdmin($query)
+    {
+        return $query->where('role', self::TYPE_ADMIN);
+    }
+
+    public function scopeCustomer($query)
+    {
+        return $query->where('role', self::TYPE_CUSTOMER);
+    }
 }
