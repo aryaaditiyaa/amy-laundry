@@ -7,24 +7,24 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
-class UserController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(Request $request)
     {
-        $title = 'Manage Admin';
+        $title = 'Manage Customer';
 
         $datasets = User::query()
             ->when($request->filled('keyword'), function ($query) use ($request) {
                 return $query->where('name', 'like', '%' . $request->keyword . '%');
             })
-            ->admin()
+            ->customer()
             ->latest()
             ->paginate(8);
 
-        return view('pages.user.index', compact('title', 'datasets'));
+        return view('pages.customer.index', compact('title', 'datasets'));
     }
 
     /**
@@ -32,8 +32,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $title = 'Create Admin';
-        return view('pages.user.create', compact('title'));
+        $title = 'Create Customer';
+        return view('pages.customer.create', compact('title'));
     }
 
     /**
@@ -44,8 +44,7 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'min:3'],
             'phone_number' => ['required', 'string'],
-            'email' => ['required', 'email', Rule::unique(User::class, 'email')],
-            'password' => ['required', 'confirmed'],
+            'address' => ['nullable', 'min:5'],
         ]);
 
         if ($validator->fails()) {
@@ -54,11 +53,11 @@ class UserController extends Controller
 
         try {
             User::query()->create(array_merge($validator->validated(), [
-                'role' => User::TYPE_ADMIN,
-                'code' => 'A-' . now()->format('dmYHis'),
+                'role' => User::TYPE_CUSTOMER,
+                'code' => 'C-' . now()->format('dmYHis'),
             ]));
 
-            return to_route('user.index')->with('success', 'Admin created!');
+            return to_route('customer.index')->with('success', 'Customer created!');
         } catch (\Exception $exception) {
             return back()->with('error', $exception->getMessage())->withInput();
         }
@@ -68,22 +67,21 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(User $customer)
     {
-        $title = 'Edit Admin';
-        return view('pages.user.edit', compact('title', 'user'));
+        $title = 'Edit Customer';
+        return view('pages.customer.edit', compact('title', 'customer'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $customer)
     {
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'min:3'],
             'phone_number' => ['required', 'string'],
-            'email' => ['required', 'email', Rule::unique(User::class, 'email')->ignore($user->id)],
-            'password' => ['required', 'confirmed'],
+            'address' => ['nullable', 'min:5'],
         ]);
 
         if ($validator->fails()) {
@@ -91,9 +89,9 @@ class UserController extends Controller
         }
 
         try {
-            $user->update($validator->validated());
+            $customer->update($validator->validated());
 
-            return to_route('user.index')->with('success', 'Admin updated!');
+            return to_route('customer.index')->with('success', 'Customer updated!');
         } catch (\Exception $exception) {
             return back()->with('error', $exception->getMessage())->withInput();
         }
@@ -102,12 +100,12 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+    public function destroy(User $customer)
     {
         try {
-            $user->delete();
+            $customer->delete();
 
-            return to_route('user.index')->with('success', 'Admin deleted!');
+            return to_route('customer.index')->with('success', 'Customer deleted!');
         } catch (\Exception $exception) {
             return back()->with('error', $exception->getMessage())->withInput();
         }
