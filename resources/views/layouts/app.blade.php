@@ -21,4 +21,6 @@
 @include('components.toast')
 
 </body>
+
+@stack('script')
 </html>
