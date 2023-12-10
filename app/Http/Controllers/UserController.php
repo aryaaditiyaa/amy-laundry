@@ -22,7 +22,8 @@ class UserController extends Controller
             })
             ->admin()
             ->latest()
-            ->paginate(8);
+            ->paginate(8)
+            ->withQueryString();
 
         return view('pages.user.index', compact('title', 'datasets'));
     }

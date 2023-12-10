@@ -8,13 +8,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TransactionItem extends Model
 {
-    protected function totalPrice(): Attribute
-    {
-        return Attribute::make(
-            get: fn(string $value) => 0,
-        );
-    }
-
     protected $fillable = [
         'transaction_id',
         'product_id',
@@ -24,6 +17,6 @@ class TransactionItem extends Model
 
     public function product(): BelongsTo
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(Product::class, 'product_id');
     }
 }

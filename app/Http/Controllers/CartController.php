@@ -32,7 +32,8 @@ class CartController extends Controller
         $title = 'Choose product';
         $products = Product::query()
             ->withCount('carts')
-            ->paginate(20);
+            ->paginate(20)
+            ->withQueryString();
 
         return view('pages.cart.create', compact('title', 'request', 'products'));
     }

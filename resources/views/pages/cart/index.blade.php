@@ -34,9 +34,6 @@
 
             <div class="grid gap-4 grid-cols-2 sm:grid-cols-3 sm:gap-6">
                 @foreach($carts as $cart)
-                    {{--                    <form action="{{ route('cart.store') }}" method="POST">--}}
-                    {{--                        @csrf--}}
-                    {{--                        <input type="hidden" name="product_id" value="{{ $cart->product->id }}">--}}
                     <div class="p-4 border rounded-lg">
                         <div class="flex flex-col gap-y-2 flex-wrap">
                             <div class="flex flex-wrap items-center gap-3 sm:gap-4">

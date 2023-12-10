@@ -36,7 +36,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class)->except('show');
     Route::resource('customer', CustomerController::class)->except('show');
     Route::resource('product', ProductController::class)->except('show');
-    Route::resource('transaction', TransactionController::class)->except('show');
+    Route::get('transaction/export', [TransactionController::class, 'export'])->name('transaction.export');
+    Route::resource('transaction', TransactionController::class)->except('edit');
     Route::resource('cart', CartController::class)->except('show');
 });
 
