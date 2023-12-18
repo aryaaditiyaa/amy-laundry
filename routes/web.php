@@ -22,14 +22,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 /* Public Area */
-Route::get('/', [HomeController::class, 'index'])->name('home');
-
-/* Admin Area */
 Route::middleware(['guest'])->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+    Route::get('/my-order', [HomeController::class, 'showTransactionPage'])->name('user.transaction.history');
+//    Route::get('/my-order/{transaction}', [HomeController::class, 'showTransactionDetailPage'])->name('user.transaction.info');
     Route::get('/login', [AuthenticationController::class, 'showLoginForm'])->name('login');
     Route::post('/login', [AuthenticationController::class, 'login'])->name('authenticate.login');
 });
 
+Route::patch('/transaction/{transaction}', [TransactionController::class, 'update'])->name('transaction.update');
+
+/* Admin Area */
 Route::middleware(['auth'])->group(function () {
     Route::post('logout', [AuthenticationController::class, 'logout'])->name('authenticate.logout');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
@@ -37,7 +40,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('customer', CustomerController::class)->except('show');
     Route::resource('product', ProductController::class)->except('show');
     Route::get('transaction/export', [TransactionController::class, 'export'])->name('transaction.export');
-    Route::resource('transaction', TransactionController::class)->except('edit');
+    Route::resource('transaction', TransactionController::class)->except(['edit', 'update']);
     Route::resource('cart', CartController::class)->except('show');
 });
-

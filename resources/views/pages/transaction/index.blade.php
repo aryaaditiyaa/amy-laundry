@@ -30,7 +30,7 @@
                         <div>
                             <button data-modal-target="filter-modal" data-modal-toggle="filter-modal" class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
                                 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="h-4 w-4 mr-2 text-gray-400" viewbox="0 0 20 20" fill="currentColor">
-                                    <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd" />
+                                    <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"/>
                                 </svg>
                                 Filter
                             </button>
@@ -52,29 +52,37 @@
                                         <form class="p-4 md:p-5" action="{{ route('transaction.index') }}" method="GET">
                                             <div class="grid gap-4 mb-4 grid-cols-2">
                                                 <div class="col-span-2 sm:col-span-1">
-                                                    <label for="start_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start Date</label>
+                                                    <label for="start_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Start
+                                                        Date</label>
                                                     <input type="date" name="start_date" value="{{ request()->start_date }}" id="start_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                                 </div>
                                                 <div class="col-span-2 sm:col-span-1">
-                                                    <label for="end_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">End Date</label>
+                                                    <label for="end_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">End
+                                                        Date</label>
                                                     <input type="date" name="end_date" value="{{ request()->end_date }}" id="end_date" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                                 </div>
                                                 <div class="col-span-2">
-                                                    <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category</label>
+                                                    <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Status</label>
                                                     <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                                                         <option selected disabled>--Select status--</option>
                                                         <option value="">All</option>
-                                                        <option value="process" {{ request()->status == 'process' ? 'selected' : null }}>Process</option>
-                                                        <option value="unpaid" {{ request()->status == 'unpaid' ? 'selected' : null }}>Unpaid</option>
-                                                        <option value="paid" {{ request()->status == 'paid' ? 'selected' : null }}>Paid</option>
+                                                        <option value="process" {{ request()->status == 'process' ? 'selected' : null }}>
+                                                            Process
+                                                        </option>
+                                                        <option value="unpaid" {{ request()->status == 'unpaid' ? 'selected' : null }}>
+                                                            Unpaid
+                                                        </option>
+                                                        <option value="paid" {{ request()->status == 'paid' ? 'selected' : null }}>
+                                                            Paid
+                                                        </option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="flex items-center gap-x-2">
-                                                <a href="{{ route('transaction.index') }}" class="text-blue-700 border border-blue-700 inline-flex items-center bg-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                <a href="{{ route('transaction.index') }}" class="text-primary-700 border border-primary-700 inline-flex items-center bg-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                                     Reset
                                                 </a>
-                                                <button type="submit" class="text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                                <button type="submit" class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                                                     Apply
                                                 </button>
                                             </div>
@@ -82,7 +90,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                         <a href="{{ route('transaction.export', [request()->getQueryString()]) }}" class="w-full md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
                             <svg class="h-4 w-4 mr-2 text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
@@ -99,7 +106,6 @@
                         <div class="p-3 border rounded-lg">
                             <div class="flex items-center justify-between mb-4">
                                 <div class="flex items-center gap-x-2">
-                                    <span class="font-medium text-sm">{{ $transaction->code }}</span>
                                     <span class="bg-gray-100 text-gray-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded me-2 dark:bg-gray-700 dark:text-gray-400 border border-gray-500 ">
                                         <svg class="w-2.5 h-2.5 me-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
                                             <path d="M10 0a10 10 0 1 0 10 10A10.011 10.011 0 0 0 10 0Zm3.982 13.982a1 1 0 0 1-1.414 0l-3.274-3.274A1.012 1.012 0 0 1 9 10V6a1 1 0 0 1 2 0v3.586l2.982 2.982a1 1 0 0 1 0 1.414Z"/>
@@ -126,47 +132,59 @@
                             <div class="flex items-center justify-between gap-x-2 mt-4 lg:mt-6">
                                 <div class="font-bold text-base sm:text-lg">Rp. {{ $transaction->total_price }}</div>
                                 <div class="flex items-center gap-x-2">
-                                    <div>
-                                        <button data-modal-target="updateModal{{ $transaction->id }}" data-modal-toggle="updateModal{{ $transaction->id }}" type="button" class="inline-flex justify-center items-center px-5 py-2.5 text-sm font-medium text-center border border-green-700 text-green-700 rounded-lg focus:ring-4 focus:ring-green-200 dark:focus:ring-green-900 hover:bg-gray-50">
-                                            Manage Status
-                                        </button>
-                                        <div id="updateModal{{ $transaction->id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 items-center w-full md:inset-0 h-modal md:h-full">
-                                            <div class="flex items-center relative p-4 w-full sm:max-w-4xl h-full md:h-auto">
-                                                <div class="w-full relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
-                                                    <button type="button" class="text-gray-400 absolute top-2.5 right-2.5 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="updateModal{{ $transaction->id }}">
-                                                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                                                        </svg>
-                                                        <span class="sr-only">Close modal</span>
-                                                    </button>
-                                                    <div class="my-4">
-                                                        <div class="grid gap-4 sm:grid-cols-1 sm:gap-6">
-                                                            <div class="w-full">
-                                                                <label for="user_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                                                    Select customer
-                                                                </label>
-                                                                <select id="user_id" name="user_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                                                    <option selected disabled>Choose a customer</option>
-                                                                    {{--@foreach($customers as $customer)
-                                                                        <option value="{{ $customer->id }}">{{ $customer->name }}</option>
-                                                                    @endforeach--}}
-                                                                </select>
+                                     
+                                        <div>
+                                            <button data-modal-target="updateModal{{ $transaction->id }}" data-modal-toggle="updateModal{{ $transaction->id }}" type="button" class="inline-flex justify-center items-center px-5 py-2.5 text-sm font-medium text-center border border-green-700 text-green-700 rounded-lg focus:ring-4 focus:ring-green-200 dark:focus:ring-green-900 hover:bg-gray-50">
+                                                Manage Status
+                                            </button>
+                                            <div id="updateModal{{ $transaction->id }}" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 items-center w-full md:inset-0 h-modal md:h-full">
+                                                <div class="flex items-center relative p-4 w-full sm:max-w-4xl h-full md:h-auto">
+                                                    <div class="w-full relative p-4 bg-white rounded-lg shadow dark:bg-gray-800 sm:p-5">
+                                                        <button type="button" class="text-gray-400 absolute top-2.5 right-2.5 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" data-modal-toggle="updateModal{{ $transaction->id }}">
+                                                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                                                            </svg>
+                                                            <span class="sr-only">Close modal</span>
+                                                        </button>
+                                                        <form action="{{ route('transaction.update', $transaction) }}" method="POST">
+                                                            @csrf
+                                                            @method('PATCH')
+                                                            <div class="my-4">
+                                                                <div class="grid gap-4 sm:grid-cols-1 sm:gap-6">
+                                                                    <div class="w-full">
+                                                                        <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                                                            Select status
+                                                                        </label>
+                                                                        <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                                            <option value="unpaid" {{ $transaction->status == 'unpaid' ? 'selected' : null }} disabled>
+                                                                                Unpaid
+                                                                            </option>
+                                                                            <option value="pending" {{ $transaction->status == 'pending' ? 'selected' : null }} disabled>
+                                                                                Pending
+                                                                            </option>
+                                                                            <option value="paid" {{ $transaction->status == 'finish' ? 'disabled' : null }}>
+                                                                                Paid
+                                                                            </option>
+                                                                            @if($transaction->proof_of_payment && $transaction->status == 'paid')
+                                                                                <option value="finish">
+                                                                                    Finish
+                                                                                </option>
+                                                                            @endif
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
+                                                            <div class="flex items-center space-x-4">
+                                                                <button type="submit" class="py-2 px-3 text-sm font-medium text-center text-white bg-primary-600 rounded-lg hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600 dark:focus:ring-primary-900">
+                                                                    Update
+                                                                </button>
+                                                            </div>
+                                                        </form>
                                                     </div>
-                                                    <form action="{{ route('transaction.update', $transaction) }}" method="POST">
-                                                        @csrf
-                                                        @method('PATCH')
-                                                        <div class="flex items-center space-x-4">
-                                                            <button type="submit" class="py-2 px-3 text-sm font-medium text-center text-white bg-primary-600 rounded-lg hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 dark:bg-primary-500 dark:hover:bg-primary-600 dark:focus:ring-primary-900">
-                                                                Update
-                                                            </button>
-                                                        </div>
-                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    @endif
                                     <a href="{{ route('transaction.show', $transaction) }}" class="inline-flex justify-center items-center px-5 py-2.5 text-sm font-medium text-center border border-primary-700 text-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-gray-50">
                                         Detail
                                     </a>
@@ -184,6 +202,5 @@
             </div>
         </div>
     </section>
-
 
 @endsection

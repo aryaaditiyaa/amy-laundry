@@ -10,9 +10,11 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Maatwebsite\Excel\Facades\Excel;
+use Mockery\Exception;
 
 class TransactionController extends Controller
 {
@@ -38,7 +40,8 @@ class TransactionController extends Controller
             })
             ->withWhereHas('items.product')
             ->withSum('items as total_price', 'price')
-            ->paginate(8)
+            ->latest()
+            ->paginate(5)
             ->withQueryString();
 
         return view('pages.transaction.index', compact('title', 'transactions'));
@@ -75,6 +78,10 @@ class TransactionController extends Controller
             'payment_description' => ['nullable', 'string'],
         ]);
 
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
         try {
             DB::beginTransaction();
 
@@ -85,7 +92,7 @@ class TransactionController extends Controller
             $transaction = Transaction::query()
                 ->create(array_merge($validator->validated(), [
                     'code' => 'T-' . now()->format('dmYHis'),
-                    'status' => $request->payment_method == 'cash' ? 'paid' : 'unpaid',
+                    'status' => $request->payment_method == 'cash' ? Transaction::STATUS_PAID : Transaction::STATUS_UNPAID,
                 ]));
 
             foreach ($carts as $cart) {
@@ -134,7 +141,33 @@ class TransactionController extends Controller
      */
     public function update(Request $request, Transaction $transaction)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'proof_of_payment' => ['nullable', 'image'],
+            'status' => ['nullable', 'string', 'in:unpaid,pending,paid,finish'],
+        ]);
+
+        if ($validator->fails()) {
+            return back()->withErrors($validator)->withInput();
+        }
+
+        try {
+            $image = $request->file('proof_of_payment')
+                ? Storage::disk('public')->putFile('proof_of_payments', $request->file('proof_of_payment'))
+                : $transaction->proof_of_payment;
+
+            $transaction->update([
+                'proof_of_payment' => $image,
+                'status' => $request->file('proof_of_payment') ? Transaction::STATUS_PENDING : $request->status,
+            ]);
+
+            if (auth()->check()){
+                return to_route('transaction.index')->with('success', 'Transaction status updated!');
+            } else {
+                return back()->with('success', 'Proof of payment successfully uploaded!');
+            }
+        } catch (\Exception $exception) {
+            return back()->with('error', $exception->getMessage())->withInput();
+        }
     }
 
     /**
@@ -153,6 +186,7 @@ class TransactionController extends Controller
                 $request->start_date,
                 $request->end_date,
                 $request->status,
-            ), 'TRANSACTION REPORT.xlsx');
+            ), 'TRANSACTION REPORT.xlsx'
+        );
     }
 }

@@ -25,8 +25,8 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
                     </svg>
                 </li>
-                <li class="flex items-center text-blue-600 dark:text-blue-500">
-                    <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-blue-600 rounded-full shrink-0 dark:border-blue-500">
+                <li class="flex items-center text-primary-600 dark:text-primary-500">
+                    <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-primary-600 rounded-full shrink-0 dark:border-primary-500">
                         3
                     </span>
                     Checkout
@@ -41,7 +41,7 @@
                         <label for="user_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Select customer
                         </label>
-                        <select id="user_id" name="user_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select id="user_id" name="user_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected disabled>Choose a customer</option>
                             @foreach($customers as $customer)
                                 <option value="{{ $customer->id }}">{{ $customer->name }}</option>
@@ -64,7 +64,7 @@
                         <label for="payment_method" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Select payment method
                         </label>
-                        <select id="payment_method" name="payment_method" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <select id="payment_method" name="payment_method" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected disabled>Choose payment method</option>
                             <option value="cash">Cash</option>
                             <option value="debit">Debit</option>

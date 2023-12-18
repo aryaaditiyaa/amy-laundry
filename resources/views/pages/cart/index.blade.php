@@ -15,8 +15,8 @@
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
                     </svg>
                 </li>
-                <li class="flex items-center text-blue-600 dark:text-blue-500">
-                    <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-blue-600 rounded-full shrink-0 dark:border-blue-500">
+                <li class="flex items-center text-primary-600 dark:text-primary-500">
+                    <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-primary-600 rounded-full shrink-0 dark:border-primary-500">
                         2
                     </span>
                     Cart
@@ -65,7 +65,7 @@
                                             </button>
                                         </form>
 
-                                        <input type="text" name="qty_action" id="quantity-input-{{ $cart->id }}" data-input-counter aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1" value="{{ $cart->qty }}" required>
+                                        <input type="text" name="qty_action" id="quantity-input-{{ $cart->id }}" data-input-counter aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-primary-500 focus:border-primary-500 block w-full dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="1" value="{{ $cart->qty }}" required>
 
                                         <form action="{{ route('cart.update', $cart) }}" method="POST">
                                             @csrf

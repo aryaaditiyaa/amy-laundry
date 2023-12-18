@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::table('transactions', function (Blueprint $table) {
             $table->after('user_id', function (Blueprint $table) {
-                $table->enum('status', ['unpaid', 'pending', 'paid']);
+                $table->enum('status', ['unpaid', 'pending', 'paid', 'finish']);
             });
         });
     }

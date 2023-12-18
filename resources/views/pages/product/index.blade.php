@@ -41,7 +41,7 @@
                                 </div>
                             </div>
                             <div class="flex items-center space-x-2 mt-4 justify-end">
-                                <a href="{{ route('product.edit', $dataset) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <a href="{{ route('product.edit', $dataset) }}" class="font-medium text-primary-600 dark:text-primary-500 hover:underline">Edit</a>
                                 <div>
                                     <div data-modal-target="deleteModal{{ $dataset->id }}" data-modal-toggle="deleteModal{{ $dataset->id }}" class="cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline">
                                         Delete

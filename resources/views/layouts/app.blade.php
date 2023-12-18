@@ -9,14 +9,15 @@
 </head>
 <body class="antialiased relative">
 
-<div class="relative min-h-screen">
-    @if(auth()->user()?->role === 'admin')
-        @include('components.navbar')
-        @include('components.sidebar')
-    @endif
+@include('components.navbar')
+@if(auth()->user()?->role === 'admin')
+    @include('components.sidebar')
+@endif
 
+<div class="relative min-h-screen">
     @yield('content')
 </div>
+@include('components.footer')
 
 @include('components.toast')
 

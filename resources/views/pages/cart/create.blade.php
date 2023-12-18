@@ -6,8 +6,8 @@
             <h1 class="font-bold text-xl md:text-2xl mb-6 md:mb-8">{{ $title }}</h1>
 
             <ol class="flex items-center w-full space-x-2 mb-6 md:mb-8 text-sm font-medium text-center text-gray-500 bg-white dark:text-gray-400 sm:text-base dark:bg-gray-800 sm:space-x-4 rtl:space-x-reverse">
-                <li class="flex items-center text-blue-600 dark:text-blue-500">
-                    <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-blue-600 rounded-full shrink-0 dark:border-blue-500">
+                <li class="flex items-center text-primary-600 dark:text-primary-500">
+                    <span class="flex items-center justify-center w-5 h-5 me-2 text-xs border border-primary-600 rounded-full shrink-0 dark:border-primary-500">
                         1
                     </span>
                     Product

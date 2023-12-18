@@ -22,8 +22,8 @@
                         <input type="number" value="{{ old('price') ?? $product->price }}" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Rp. " required="">
                     </div>
                     <div class="w-full">
-                        <label for="unit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select an option</label>
-                        <select id="unit" name="unit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <label for="unit" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unit</label>
+                        <select id="unit" name="unit" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
                             <option selected disabled>Choose a unit</option>
                             <option value="Pcs" {{ (old('unit') ?? $product->unit) === 'Pcs' ? 'selected' : null }}>Pcs</option>
                             <option value="Kilogram" {{ (old('unit') ?? $product->unit) === 'Kilogram' ? 'selected' : null }}>Kilogram (KG)</option>

@@ -70,7 +70,7 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex items-center space-x-2">
-                                        <a href="{{ route('user.edit', $dataset) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                        <a href="{{ route('user.edit', $dataset) }}" class="font-medium text-primary-600 dark:text-primary-500 hover:underline">Edit</a>
                                         <div>
                                             <div data-modal-target="deleteModal{{ $dataset->id }}" data-modal-toggle="deleteModal{{ $dataset->id }}" class="cursor-pointer font-medium text-red-600 dark:text-red-500 hover:underline">
                                                 Delete
