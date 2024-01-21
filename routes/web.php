@@ -24,10 +24,10 @@ use Illuminate\Support\Facades\Route;
 /* Public Area */
 Route::middleware(['guest'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
-    Route::get('/my-order', [HomeController::class, 'showTransactionPage'])->name('user.transaction.history');
-//    Route::get('/my-order/{transaction}', [HomeController::class, 'showTransactionDetailPage'])->name('user.transaction.info');
-    Route::get('/login', [AuthenticationController::class, 'showLoginForm'])->name('login');
-    Route::post('/login', [AuthenticationController::class, 'login'])->name('authenticate.login');
+    Route::get('my-order', [HomeController::class, 'showTransactionPage'])->name('user.transaction.history');
+    Route::get('login', [AuthenticationController::class, 'showLoginForm'])->name('login');
+    Route::post('login', [AuthenticationController::class, 'login'])->name('authenticate.login');
+    Route::get('product-list', [HomeController::class, 'showPriceListPage'])->name('product-list');
 });
 
 Route::patch('/transaction/{transaction}', [TransactionController::class, 'update'])->name('transaction.update');

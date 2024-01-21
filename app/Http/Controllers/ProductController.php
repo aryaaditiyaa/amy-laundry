@@ -107,7 +107,7 @@ class ProductController extends Controller
                 ? Storage::disk('public')->putFile('products', $request->file('image'))
                 : $product->image;
 
-            $product->query()->update(array_merge($validator->validated(), [
+            $product->update(array_merge($validator->validated(), [
                 'image' => $image
             ]));
 

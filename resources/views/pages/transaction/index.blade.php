@@ -132,7 +132,7 @@
                             <div class="flex items-center justify-between gap-x-2 mt-4 lg:mt-6">
                                 <div class="font-bold text-base sm:text-lg">Rp. {{ $transaction->total_price }}</div>
                                 <div class="flex items-center gap-x-2">
-                                     
+
                                         <div>
                                             <button data-modal-target="updateModal{{ $transaction->id }}" data-modal-toggle="updateModal{{ $transaction->id }}" type="button" class="inline-flex justify-center items-center px-5 py-2.5 text-sm font-medium text-center border border-green-700 text-green-700 rounded-lg focus:ring-4 focus:ring-green-200 dark:focus:ring-green-900 hover:bg-gray-50">
                                                 Manage Status
@@ -184,7 +184,6 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    @endif
                                     <a href="{{ route('transaction.show', $transaction) }}" class="inline-flex justify-center items-center px-5 py-2.5 text-sm font-medium text-center border border-primary-700 text-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-gray-50">
                                         Detail
                                     </a>

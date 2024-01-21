@@ -215,6 +215,11 @@
                 @endforelse
             </div>
 
+            @if(!empty($transactions))
+                <div class="mt-4">
+                    {{ $transactions->links() }}
+                </div>
+            @endif
         </div>
     </section>
 @endsection

@@ -10,7 +10,7 @@
                     clothes deserve the best, and so do you. Experience the difference with our laundry services – where
                     expertise meets passion for garment care.</p>
                 <div class="flex flex-wrap items-center gap-3">
-                    <a href="#" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
+                    <a href="{{ 'https://wa.me/6289613506001' }}" class="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-900">
                         Start Your Laundry Experience
                         <svg class="w-5 h-5 ml-2 -mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
@@ -31,11 +31,10 @@
         </div>
     </section>
 
-    <section class="bg-white dark:bg-gray-900">
+    <section id="feature" class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
             <div class="max-w-screen-md mb-8 lg:mb-16">
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Our Laundry Care
-                    Features</h2>
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Our Laundry Care</h2>
                 <p class="text-gray-500 sm:text-xl dark:text-gray-400">
                     Elevate your laundry with convenient, eco-friendly features. From express services to personalized
                     care, discover excellence. Your clothes, our commitment.
@@ -118,7 +117,7 @@
                     Discover our affordable laundry services through a straightforward price list. We believe in clear, honest pricing to provide quality care for your clothes.
                 </p>
             </div>
-            <div class="space-y-8 lg:grid lg:grid-cols-3 sm:gap-6 xl:gap-10 lg:space-y-0">
+            <div class="space-y-8 grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 xl:gap-10 lg:space-y-0">
                 @foreach($products as $product)
                     <div class="p-4 border rounded-lg">
                         <div class="flex flex-col gap-y-2 flex-wrap">
@@ -134,6 +133,15 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+
+            <div class="mt-6 flex justify-center">
+                <a href="{{ route('product-list') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    View more
+                    <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>

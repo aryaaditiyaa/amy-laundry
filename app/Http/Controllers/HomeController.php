@@ -7,6 +7,7 @@ use App\Models\Transaction;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 
 class HomeController extends Controller
 {
@@ -57,14 +58,14 @@ class HomeController extends Controller
         return view('pages.my-order', compact('title', 'transactions'));
     }
 
-    /*public function showTransactionInfoPage()
-    {
-        $title = '';
-        return view('pages.order-info', compact('title'));
-    }*/
-
     public function showPriceListPage()
     {
-        return 'price';
+        $title = 'Product List';
+
+        $products = Product::query()
+            ->latest('name')
+            ->paginate(2);
+
+        return view('pages.product-list', compact('title', 'products'));
     }
 }
