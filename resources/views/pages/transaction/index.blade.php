@@ -165,7 +165,7 @@
                                                                             <option value="paid" {{ $transaction->status == 'finish' ? 'disabled' : null }}>
                                                                                 Paid
                                                                             </option>
-                                                                            @if($transaction->proof_of_payment && $transaction->status == 'paid')
+                                                                            @if($transaction->status == 'paid')
                                                                                 <option value="finish">
                                                                                     Finish
                                                                                 </option>
