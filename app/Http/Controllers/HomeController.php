@@ -64,7 +64,7 @@ class HomeController extends Controller
 
         $products = Product::query()
             ->latest('name')
-            ->paginate(2);
+            ->paginate(9);
 
         return view('pages.product-list', compact('title', 'products'));
     }

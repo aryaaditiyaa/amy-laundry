@@ -125,6 +125,7 @@
                                 <img src="{{ asset('storage/' . $product->image) }}" class="w-full sm:w-20 h-20 rounded object-center object-cover" alt="">
                                 <div>
                                     <div class="text-lg font-medium">{{ $product->name }}</div>
+                                    <div class="text-sm text-gray-500 line-clamp-1">{{ $product->description }}</div>
                                     <div class="text-base mt-1 text-primary-600">
                                         Rp. {{ $product->price }} {{ $product->unit ? ' / ' . $product->unit: null }}
                                     </div>

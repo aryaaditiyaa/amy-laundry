@@ -44,7 +44,7 @@ class CustomerController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'min:3'],
-            'email' => ['required', 'email', Rule::unique(User::class, 'email')],
+            'email' => ['nullable', 'email', Rule::unique(User::class, 'email')],
             'phone_number' => ['required', 'string'],
             'address' => ['nullable', 'min:5'],
         ]);
@@ -83,7 +83,7 @@ class CustomerController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'min:3'],
             'phone_number' => ['required', 'string'],
-            'email' => ['required', 'email', Rule::unique(User::class, 'email')->ignore($customer->id)],
+            'email' => ['nullable', 'email', Rule::unique(User::class, 'email')->ignore($customer->id)],
             'address' => ['nullable', 'min:5'],
         ]);
 

@@ -175,7 +175,15 @@ class TransactionController extends Controller
      */
     public function destroy(Transaction $transaction)
     {
-        //
+        try {
+            $transaction->history()->delete();
+            $transaction->items()->delete();
+            $transaction->delete();
+
+            return back()->with('success', 'Transaction canceled!');
+        } catch (\Exception $exception) {
+            return back()->with('error', $exception->getMessage())->withInput();
+        }
     }
 
     public function export(Request $request)
