@@ -27,7 +27,12 @@ class TransactionController extends Controller
 
         $transactions = Transaction::query()
             ->when($request->filled('keyword'), function ($query) use ($request) {
-                return $query->where('code', $request->keyword);
+//                return $query->where('code', $request->keyword);
+                $query->where('code', $request->keyword);
+                $query->orWhere(function ($query) use ($request) {
+                    $query->whereRelation('user', 'phone_number', '=', $request->keyword);
+                    $query->orWhereRelation('user', 'email', '=', $request->keyword);
+                });
             })
             ->when($request->filled('start_date') && !$request->filled('end_date'), function ($query) use ($request) {
                 return $query->whereDate('created_at', Carbon::parse($request->start_date)->startOfDay());
