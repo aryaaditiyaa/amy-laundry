@@ -31,6 +31,7 @@ class TransactionController extends Controller
                 $query->where('code', $request->keyword);
                 $query->orWhere(function ($query) use ($request) {
                     $query->whereRelation('user', 'phone_number', '=', $request->keyword);
+                    $query->orWhereRelation('user', 'name', '=', $request->keyword);
                     $query->orWhereRelation('user', 'email', '=', $request->keyword);
                 });
             })
