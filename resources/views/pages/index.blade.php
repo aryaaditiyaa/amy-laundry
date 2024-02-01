@@ -34,7 +34,8 @@
     <section id="feature" class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
             <div class="max-w-screen-md mb-8 lg:mb-16">
-                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Our Laundry Care</h2>
+                <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">Our Laundry
+                    Care</h2>
                 <p class="text-gray-500 sm:text-xl dark:text-gray-400">
                     Elevate your laundry with convenient, eco-friendly features. From express services to personalized
                     care, discover excellence. Your clothes, our commitment.
@@ -114,7 +115,8 @@
                     Affordable Rates, Quality Care
                 </h2>
                 <p class="mb-5 font-light text-gray-500 sm:text-xl dark:text-gray-400">
-                    Discover our affordable laundry services through a straightforward price list. We believe in clear, honest pricing to provide quality care for your clothes.
+                    Discover our affordable laundry services through a straightforward price list. We believe in clear,
+                    honest pricing to provide quality care for your clothes.
                 </p>
             </div>
             <div class="space-y-8 grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6 xl:gap-10 lg:space-y-0">
@@ -157,24 +159,33 @@
                     Questions? Pricing? Schedule? We're here for you. Reach out for reliable solutions.
                 </p>
             </div>
-            <div class="grid grid-cols-2 items-center gap-x-12 px-16">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d833.7177390225495!2d106.85380139659671!3d-6.283143081779022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f265e455c8f3%3A0x4e442676358a2b9e!2sJl.%20Kober%20No.14%2C%20RT.7%2FRW.2%2C%20Balekambang%2C%20Kec.%20Kramat%20jati%2C%20Kota%20Jakarta%20Timur%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2013530!5e0!3m2!1sid!2sid!4v1706796240433!5m2!1sid!2sid" width="480" height="360" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <div class="grid grid-cols-1 sm:grid-cols-2 items-center gap-x-12 gap-y-8 px-0 sm:px-16">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d833.7177390225495!2d106.85380139659671!3d-6.283143081779022!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f265e455c8f3%3A0x4e442676358a2b9e!2sJl.%20Kober%20No.14%2C%20RT.7%2FRW.2%2C%20Balekambang%2C%20Kec.%20Kramat%20jati%2C%20Kota%20Jakarta%20Timur%2C%20Daerah%20Khusus%20Ibukota%20Jakarta%2013530!5e0!3m2!1sid!2sid!4v1706796240433!5m2!1sid!2sid"
+                    width="480"
+                    height="360"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
                 <div class="grid grid-rows-3 gap-y-5">
                     <div class="flex flex-wrap gap-3 items-center">
                         <div class="col-span-2 rounded-full text-primary-700 border border-primary-700 p-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                                <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd" />
+                                <path fill-rule="evenodd" d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" clip-rule="evenodd"/>
                             </svg>
                         </div>
                         <div class="font-bold text-lg">Address</div>
                         <div class="w-full col-span-4 text-gray-700">
-                            Jl. Kober No.14, RT.6/RW.2, Balekambang, Kec. Kramat jati, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13530
+                            Jl. Kober No.14, RT.6/RW.2, Balekambang, Kec. Kramat jati, Kota Jakarta Timur, Daerah Khusus
+                            Ibukota Jakarta 13530
                         </div>
                     </div>
-                    <div class="flex flex-wrap gap-3 gap-y-2 items-center">
+                    <div class="flex flex-wrap gap-3 items-center">
                         <div class="col-span-2 rounded-full text-primary-700 border border-primary-700 p-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                                <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd" />
+                                <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd"/>
                             </svg>
                         </div>
                         <div class="font-bold text-lg">Phone Number</div>
@@ -182,10 +193,10 @@
                             +62 896-1350-6001
                         </div>
                     </div>
-                    <div class="flex flex-wrap gap-x-3 gap-y-2 items-center">
+                    <div class="flex flex-wrap gap-3 items-center">
                         <div class="col-span-2 rounded-full text-primary-700 border border-primary-700 p-2">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                                <path fill-rule="evenodd" d="M17.834 6.166a8.25 8.25 0 1 0 0 11.668.75.75 0 0 1 1.06 1.06c-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788 3.807-3.808 9.98-3.808 13.788 0A9.722 9.722 0 0 1 21.75 12c0 .975-.296 1.887-.809 2.571-.514.685-1.28 1.179-2.191 1.179-.904 0-1.666-.487-2.18-1.164a5.25 5.25 0 1 1-.82-6.26V8.25a.75.75 0 0 1 1.5 0V12c0 .682.208 1.27.509 1.671.3.401.659.579.991.579.332 0 .69-.178.991-.579.3-.4.509-.99.509-1.671a8.222 8.222 0 0 0-2.416-5.834ZM15.75 12a3.75 3.75 0 1 0-7.5 0 3.75 3.75 0 0 0 7.5 0Z" clip-rule="evenodd" />
+                                <path fill-rule="evenodd" d="M17.834 6.166a8.25 8.25 0 1 0 0 11.668.75.75 0 0 1 1.06 1.06c-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788 3.807-3.808 9.98-3.808 13.788 0A9.722 9.722 0 0 1 21.75 12c0 .975-.296 1.887-.809 2.571-.514.685-1.28 1.179-2.191 1.179-.904 0-1.666-.487-2.18-1.164a5.25 5.25 0 1 1-.82-6.26V8.25a.75.75 0 0 1 1.5 0V12c0 .682.208 1.27.509 1.671.3.401.659.579.991.579.332 0 .69-.178.991-.579.3-.4.509-.99.509-1.671a8.222 8.222 0 0 0-2.416-5.834ZM15.75 12a3.75 3.75 0 1 0-7.5 0 3.75 3.75 0 0 0 7.5 0Z" clip-rule="evenodd"/>
                             </svg>
                         </div>
                         <div class="font-bold text-lg">Email</div>
