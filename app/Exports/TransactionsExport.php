@@ -4,12 +4,14 @@ namespace App\Exports;
 
 use App\Models\Transaction;
 use Carbon\Carbon;
+use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\WithMapping;
 
-class TransactionsExport implements FromCollection, ShouldAutoSize, WithMapping, WithHeadings
+class TransactionsExport implements FromView, ShouldAutoSize
 {
     private $keyword;
     private $startDate;
@@ -30,13 +32,9 @@ class TransactionsExport implements FromCollection, ShouldAutoSize, WithMapping,
         $this->status = $status;
     }
 
-
-    /**
-    * @return \Illuminate\Support\Collection
-    */
-    public function collection()
+    public function view(): View
     {
-        return Transaction::query()
+        $transactions = Transaction::query()
             ->when($this->keyword, function ($query) {
                 return $query->where('code', $this->keyword);
             })
@@ -49,43 +47,12 @@ class TransactionsExport implements FromCollection, ShouldAutoSize, WithMapping,
             ->when($this->status, function ($query) {
                 return $query->where('status', $this->status);
             })
+            ->withAggregate('creator', 'name')
             ->withSum('items as total_price', 'price')
             ->withCount('items')
             ->withWhereHas('user')
             ->get();
+
+        return view('exports.transaction', compact('transactions'));
     }
-
-    public function headings(): array
-    {
-        return [
-            'Code',
-            'Items Count',
-            'Customer Name',
-            'Customer Email',
-            'Customer Phone Number',
-//            'Customer Address',
-            'Total Price',
-            'Status',
-            'Payment Method',
-            'Created At',
-        ];
-    }
-
-    public function map($row): array
-    {
-        return [
-            $row->code,
-            $row->items_count,
-            $row->user?->name,
-            $row->user?->email,
-            $row->user?->phone_number,
-//            $row->user?->address,
-            $row->total_price,
-            $row->status,
-            $row->payment_method,
-            Carbon::parse($row->created_at)->format('d-m-Y H:i'),
-        ];
-    }
-
-
 }

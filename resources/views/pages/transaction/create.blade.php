@@ -36,8 +36,8 @@
 
             <form action="{{ route('transaction.store') }}" method="POST">
                 @csrf
-                <div class="grid gap-4 sm:grid-cols-1 sm:gap-6">
-                    <div class="w-full">
+                <div class="grid gap-4 sm:grid-cols-2 sm:gap-6">
+                    <div class="col-span-full">
                         <label for="user_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Select customer
                         </label>
@@ -48,7 +48,7 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="w-full">
+                    <div class="col-span-full">
                         <div class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Order List</div>
                         <div class="flex flex-col space-y-2">
                             @foreach($carts as $cart)
@@ -60,7 +60,7 @@
                             @endforeach
                         </div>
                     </div>
-                    <div class="w-full">
+                    <div class="col-span-full sm:col-span-1">
                         <label for="payment_method" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Select payment method
                         </label>
@@ -70,6 +70,12 @@
                             <option value="debit">Debit</option>
                             <option value="other">Other</option>
                         </select>
+                    </div>
+                    <div class="col-span-full sm:col-span-1">
+                        <label for="estimated_finish_at" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Estimated Finish At
+                        </label>
+                        <input name="estimated_finish_at" type="datetime-local" id="estimated_finish_at" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
                     </div>
                 </div>
                 <div class="flex items-center space-x-2">

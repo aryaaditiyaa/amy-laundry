@@ -43,3 +43,12 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('transaction', TransactionController::class)->except(['edit', 'update']);
     Route::resource('cart', CartController::class)->except('show');
 });
+
+Route::get('mail', function (){
+    $data = \App\Models\Transaction::query()
+        ->with('items')
+        ->withSum('items as total_price', 'price')
+        ->find(6);
+
+    return (new \App\Mail\TransactionCreatedMail($data))->render();
+});

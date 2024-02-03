@@ -73,7 +73,7 @@
                                 Total Price
                             </dt>
                             <dd class="mt-1 text-lg font-bold text-gray-900 sm:mt-0 sm:col-span-2">
-                                {{ "Rp " . number_format($transaction->total_price, 0 , '.' , ',') }}
+                                {{ "Rp. " . number_format($transaction->total_price, 0 , '.' , ',') }}
                             </dd>
                         </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -98,10 +98,18 @@
                         </div>
                         <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                             <dt class="text-sm font-medium text-gray-500">
+                                Estimated Finish At
+                            </dt>
+                            <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                {{ \Carbon\Carbon::parse($transaction->estimated_finish_at)->isoFormat('LLL') }}
+                            </dd>
+                        </div>
+                        <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                            <dt class="text-sm font-medium text-gray-500">
                                 Created At
                             </dt>
                             <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                                {{ \Carbon\Carbon::parse($transaction->created_at)->format('d-m-Y H:i:s') }}
+                                {{ \Carbon\Carbon::parse($transaction->created_at)->isoFormat('LLL') }}
                             </dd>
                         </div>
                     </dl>
@@ -136,7 +144,7 @@
                                                 <p class="text-sm font-light">Qty : {{ $data->qty }}</p>
                                             </div>
                                             <p class="lg:mt-0 mt-1">
-                                                {{ "Rp " . $data->price }}
+                                                {{ "Rp. " . $data->price }}
                                             </p>
                                         </div>
                                     </div>

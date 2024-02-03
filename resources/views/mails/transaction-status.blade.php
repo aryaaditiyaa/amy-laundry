@@ -1,5 +1,5 @@
 <x-mail::message>
-    # Order Shipped
+    # Order Finished
 
     Your order is finished! Ready for pickup at your convenience.
 

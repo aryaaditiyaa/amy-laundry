@@ -14,7 +14,6 @@ class TransactionObserver
      */
     public function created(Transaction $transaction): void
     {
-        //
     }
 
     /**
@@ -23,6 +22,7 @@ class TransactionObserver
     public function updated(Transaction $transaction): void
     {
         $transaction->loadAggregate('user', 'email');
+
         if ($transaction->isDirty('status')) {
             if ($transaction->status == 'pending') {
                 TransactionHistory::query()
@@ -35,6 +35,24 @@ class TransactionObserver
                     ->create([
                         'transaction_id' => $transaction->id,
                         'description' => 'Payment verified! Your order is now confirmed for processing.'
+                    ]);
+            } else if ($transaction->status == 'washing') {
+                TransactionHistory::query()
+                    ->create([
+                        'transaction_id' => $transaction->id,
+                        'description' => "We're washing your clothes."
+                    ]);
+            } else if ($transaction->status == 'drying') {
+                TransactionHistory::query()
+                    ->create([
+                        'transaction_id' => $transaction->id,
+                        'description' => "Your clothes are currently being dried."
+                    ]);
+            } else if ($transaction->status == 'ironing') {
+                TransactionHistory::query()
+                    ->create([
+                        'transaction_id' => $transaction->id,
+                        'description' => "Your clothes are being ironed now."
                     ]);
             } else if ($transaction->status == 'finish') {
                 $description = 'Your order is finished! Ready for pickup at your convenience.';

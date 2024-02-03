@@ -19,6 +19,8 @@ class Transaction extends Model
         'proof_of_payment',
         'payment_method',
         'payment_description',
+        'created_by',
+        'estimated_finish_at'
     ];
 
     public function user(): BelongsTo
@@ -39,5 +41,10 @@ class Transaction extends Model
     public function latestHistory(): HasOne
     {
         return $this->hasOne(TransactionHistory::class)->latestOfMany();
+    }
+
+    public function creator(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id');
     }
 }

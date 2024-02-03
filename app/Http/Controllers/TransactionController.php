@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\TransactionsExport;
+use App\Mail\TransactionCreatedMail;
 use App\Models\Cart;
 use App\Models\Transaction;
 use App\Models\TransactionItem;
@@ -10,6 +11,7 @@ use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -31,7 +33,7 @@ class TransactionController extends Controller
                 $query->where('code', $request->keyword);
                 $query->orWhere(function ($query) use ($request) {
                     $query->whereRelation('user', 'phone_number', '=', $request->keyword);
-                    $query->orWhereRelation('user', 'name', '=', $request->keyword);
+                    $query->orWhereRelation('user', 'name', 'like', '%' . $request->keyword . '%');
                     $query->orWhereRelation('user', 'email', '=', $request->keyword);
                 });
             })
@@ -82,6 +84,7 @@ class TransactionController extends Controller
             'user_id' => ['required', Rule::exists(User::class, 'id')],
             'payment_method' => ['required', 'in:debit,cash,other'],
             'payment_description' => ['nullable', 'string'],
+            'estimated_finish_at' => ['required']
         ]);
 
         if ($validator->fails()) {
@@ -99,6 +102,7 @@ class TransactionController extends Controller
                 ->create(array_merge($validator->validated(), [
                     'code' => 'T-' . now()->format('dmYHis'),
                     'status' => $request->payment_method == 'cash' ? Transaction::STATUS_PAID : Transaction::STATUS_UNPAID,
+                    'created_by' => auth()->user()?->id
                 ]));
 
             foreach ($carts as $cart) {
@@ -107,11 +111,21 @@ class TransactionController extends Controller
                         'transaction_id' => $transaction->id,
                         'product_id' => $cart->product_id,
                         'qty' => $cart->qty,
-                        'price' => $cart->product->price * $cart->qty,
+                        'price' => $cart->product?->price * $cart->qty,
                     ]);
             }
 
             Cart::query()->delete();
+
+            $transaction = Transaction::query()
+                ->with('items')
+                ->withSum('items as total_price', 'price')
+                ->withAggregate('user', 'email')
+                ->find($transaction->id);
+
+            if ($transaction->user_email) {
+                Mail::to($transaction->user_email)->send(new TransactionCreatedMail($transaction));
+            }
 
             DB::commit();
             return to_route('transaction.index')->with('success', 'Transaction created!');
@@ -149,7 +163,7 @@ class TransactionController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'proof_of_payment' => ['nullable', 'image'],
-            'status' => ['nullable', 'string', 'in:unpaid,pending,paid,finish'],
+            'status' => ['nullable', 'string', 'in:unpaid,pending,paid,washing,drying,ironing,finish'],
         ]);
 
         if ($validator->fails()) {

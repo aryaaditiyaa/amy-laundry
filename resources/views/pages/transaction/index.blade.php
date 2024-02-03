@@ -195,14 +195,26 @@
                                                                         <option value="pending" {{ $transaction->status == 'pending' ? 'selected' : null }} disabled>
                                                                             Pending
                                                                         </option>
-                                                                        <option value="paid" {{ $transaction->status == 'finish' ? 'disabled' : null }}>
+                                                                        <option value="paid" {{ $transaction->status == 'paid' ? 'selected' : null }}>
                                                                             Paid
                                                                         </option>
-                                                                        @if($transaction->status == 'paid')
-                                                                            <option value="finish">
-                                                                                Finish
-                                                                            </option>
-                                                                        @endif
+                                                                        <option value="washing" {{ $transaction->status == 'washing' ? 'selected' : null }}>
+                                                                            Washing
+                                                                        </option>
+                                                                        <option value="drying" {{ $transaction->status == 'drying' ? 'selected' : null }}>
+                                                                            Drying
+                                                                        </option>
+                                                                        <option value="ironing" {{ $transaction->status == 'ironing' ? 'selected' : null }}>
+                                                                            Ironing
+                                                                        </option>
+                                                                        <option value="finish" {{ $transaction->status == 'finish' ? 'selected' : null }}>
+                                                                            Finish
+                                                                        </option>
+{{--                                                                        @if($transaction->status == 'paid')--}}
+{{--                                                                            <option value="finish">--}}
+{{--                                                                                Finish--}}
+{{--                                                                            </option>--}}
+{{--                                                                        @endif--}}
                                                                     </select>
                                                                 </div>
                                                             </div>
