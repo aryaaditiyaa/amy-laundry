@@ -100,6 +100,9 @@
                                 </span>
                             </div>
                             <div class="flex items-center gap-x-2">
+                                <div class="{{ $transaction->type == 'express' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300' : 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300' }} text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                    {{ ucfirst(str_replace('_', ' ', $transaction->type)) }}
+                                </div>
                                 <div class="{{ $transaction->status == 'paid' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300' }} text-xs font-medium px-2.5 py-0.5 rounded-full">
                                     {{ \Illuminate\Support\Str::upper($transaction->status) }}
                                 </div>
@@ -116,7 +119,7 @@
                         @empty
                         @endforelse
                         <div class="flex items-center justify-between gap-x-2 mt-4 lg:mt-6">
-                            <div class="font-bold text-base sm:text-lg">Rp. {{ $transaction->total_price }}</div>
+                            <div class="font-bold text-base sm:text-lg">Rp. {{ $transaction->total_price + $transaction->delivery_fee }}</div>
                             <div class="flex items-center gap-x-2">
                                 <div>
                                     <button data-modal-target="progressModal{{ $transaction->id }}" data-modal-toggle="progressModal{{ $transaction->id }}" type="button" class="inline-flex justify-center items-center px-5 py-2.5 text-sm font-medium text-center border border-green-700 text-green-700 rounded-lg focus:ring-4 focus:ring-green-200 dark:focus:ring-green-900 hover:bg-gray-50">

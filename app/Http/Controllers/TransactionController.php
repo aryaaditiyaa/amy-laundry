@@ -29,7 +29,6 @@ class TransactionController extends Controller
 
         $transactions = Transaction::query()
             ->when($request->filled('keyword'), function ($query) use ($request) {
-//                return $query->where('code', $request->keyword);
                 $query->where('code', $request->keyword);
                 $query->orWhere(function ($query) use ($request) {
                     $query->whereRelation('user', 'phone_number', '=', $request->keyword);
@@ -45,6 +44,9 @@ class TransactionController extends Controller
             })
             ->when($request->filled('status'), function ($query) use ($request) {
                 return $query->where('status', $request->status);
+            })
+            ->when($request->filled('type'), function ($query) use ($request) {
+                return $query->where('type', $request->type);
             })
             ->withWhereHas('items.product')
             ->withSum('items as total_price', 'price')
@@ -84,7 +86,10 @@ class TransactionController extends Controller
             'user_id' => ['required', Rule::exists(User::class, 'id')],
             'payment_method' => ['required', 'in:debit,cash,other'],
             'payment_description' => ['nullable', 'string'],
-            'estimated_finish_at' => ['required']
+            'estimated_finish_at' => ['required'],
+            'type' => ['required', 'in:express,non_express'],
+            'delivery_option' => ['nullable', 'in:deliver_only,pickup_only,deliver_and_pickup'],
+            'delivery_fee' => ['nullable', 'integer'],
         ]);
 
         if ($validator->fails()) {

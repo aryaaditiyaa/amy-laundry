@@ -77,6 +77,14 @@
                                                         </option>
                                                     </select>
                                                 </div>
+                                                <div class="col-span-2">
+                                                    <label for="type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Type</label>
+                                                    <select id="type" name="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                                        <option selected disabled>--Select type--</option>
+                                                        <option value="express">Express</option>
+                                                        <option value="non_express">Non-express</option>
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div class="flex items-center gap-x-2">
                                                 <a href="{{ route('transaction.index') }}" class="text-primary-700 border border-primary-700 inline-flex items-center bg-white focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
@@ -114,6 +122,9 @@
                                     </span>
                                 </div>
                                 <div class="flex items-center gap-x-2">
+                                    <div class="{{ $transaction->type == 'express' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300' : 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300' }} text-xs font-medium px-2.5 py-0.5 rounded-full">
+                                        {{ ucfirst(str_replace('_', ' ', $transaction->type)) }}
+                                    </div>
                                     <div class="{{ $transaction->status == 'paid' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300' }} text-xs font-medium px-2.5 py-0.5 rounded-full">
                                         {{ \Illuminate\Support\Str::upper($transaction->status) }}
                                     </div>
@@ -130,7 +141,7 @@
                             @empty
                             @endforelse
                             <div class="flex items-center justify-between gap-x-2 mt-4 lg:mt-6">
-                                <div class="font-bold text-base sm:text-lg">Rp. {{ $transaction->total_price }}</div>
+                                <div class="font-bold text-base sm:text-lg">Rp. {{ $transaction->total_price + $transaction->delivery_fee }}</div>
                                 <div class="flex items-center gap-x-2">
                                     <div>
                                         @if($transaction->status == 'unpaid')

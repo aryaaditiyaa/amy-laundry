@@ -72,6 +72,31 @@
                         </select>
                     </div>
                     <div class="col-span-full sm:col-span-1">
+                        <label for="type" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Select type
+                        </label>
+                        <select id="type" name="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option selected disabled>Choose type</option>
+                            <option value="express">Express</option>
+                            <option value="non_express">Non-express</option>
+                        </select>
+                    </div>
+                    <div class="col-span-full sm:col-span-1">
+                        <label for="delivery_option" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            Select delivery option
+                        </label>
+                        <select id="delivery_option" name="delivery_option" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option value="">Self-service</option>
+                            <option value="deliver_only">Delivery Only</option>
+                            <option value="pickup_only">Pickup Only</option>
+                            <option value="deliver_and_pickup">Deliver and Pickup</option>
+                        </select>
+                    </div>
+                    <div id="delivery_fee_form" class="hidden col-span-full sm:col-span-1">
+                        <label for="delivery_fee" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Delivery/Pickup Fee</label>
+                        <input type="number" value="{{ old('delivery_fee') }}" name="delivery_fee" id="delivery_fee" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Rp. ">
+                    </div>
+                    <div class="col-span-full sm:col-span-1">
                         <label for="estimated_finish_at" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                             Estimated Finish At
                         </label>
@@ -90,3 +115,21 @@
         </div>
     </section>
 @endsection
+
+@push('script')
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const selectElement = document.getElementById('delivery_option');
+            const deliveryFeeForm = document.getElementById('delivery_fee_form');
+
+            selectElement.addEventListener('change', function() {
+                let selectedValue = selectElement.value;
+                if (selectedValue !== "") {
+                    deliveryFeeForm.classList.remove('hidden');
+                } else {
+                    deliveryFeeForm.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+@endpush

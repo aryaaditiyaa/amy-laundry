@@ -20,7 +20,10 @@ class Transaction extends Model
         'payment_method',
         'payment_description',
         'created_by',
-        'estimated_finish_at'
+        'estimated_finish_at',
+        'type',
+        'delivery_option',
+        'delivery_fee',
     ];
 
     public function user(): BelongsTo
