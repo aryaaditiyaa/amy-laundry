@@ -44,6 +44,52 @@
                 </div>
             </div>
 
+            @if(isset($transaction->complaint))
+                <div class="bg-white border overflow-hidden sm:rounded-lg mt-4">
+                    <div class="px-4 py-5 sm:px-6">
+                        <h3 class="text-lg leading-6 font-medium text-gray-900">
+                            Transaction Complaint
+                        </h3>
+                    </div>
+                    <div class="border-t border-gray-200">
+                        <dl>
+                            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                <dt class="text-sm font-medium text-gray-500">
+                                    Proof of Complaint
+                                </dt>
+                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                    @if($transaction->complaint?->proof_of_complaint)
+                                        <img src="{{ asset('storage/' . $transaction->complaint?->proof_of_complaint) }}" class="w-3/4 object-cover object-center" alt="">
+                                    @else
+                                        -
+                                    @endif
+                                </dd>
+                            </div>
+                        </dl>
+                        <dl>
+                            <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                <dt class="text-sm font-medium text-gray-500">
+                                    Description
+                                </dt>
+                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                    {{ $transaction->complaint?->description }}
+                                </dd>
+                            </div>
+                        </dl>
+                        <dl>
+                            <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                                <dt class="text-sm font-medium text-gray-500">
+                                    Created At
+                                </dt>
+                                <dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+                                    {{ \Carbon\Carbon::parse($transaction->complaint?->created_at)->isoFormat('LLL') }}
+                                </dd>
+                            </div>
+                        </dl>
+                    </div>
+                </div>
+            @endif
+
             <div class="bg-white border overflow-hidden sm:rounded-lg mt-4">
                 <div class="px-4 py-5 sm:px-6">
                     <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -155,7 +201,7 @@
                                         src="{{ asset('storage/'. $data->product?->image) }}"
                                         alt="Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt."
                                         class="w-full h-full object-center object-cover"
-                                        >
+                                    >
                                 </div>
 
                                 <div class="ml-4 lg:flex-1 flex flex-col">

@@ -6,6 +6,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\TransactionComplaintController;
 use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +32,7 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::patch('/transaction/{transaction}', [TransactionController::class, 'update'])->name('transaction.update');
+Route::resource('/transaction-complaint', TransactionComplaintController::class)->only('store');
 
 /* Admin Area */
 Route::middleware(['auth'])->group(function () {

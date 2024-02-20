@@ -46,6 +46,7 @@ class HomeController extends Controller
                 ->when($request->filled('status'), function ($query) use ($request) {
                     return $query->where('status', $request->status);
                 })
+                ->with('complaint')
                 ->withWhereHas('items.product')
                 ->withSum('items as total_price', 'price')
                 ->latest()

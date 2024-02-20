@@ -47,6 +47,7 @@ class TransactionsExport implements FromView, ShouldAutoSize
             ->when($this->status, function ($query) {
                 return $query->where('status', $this->status);
             })
+            ->with('complaint')
             ->withAggregate('creator', 'name')
             ->withSum('items as total_price', 'price')
             ->withCount('items')

@@ -131,6 +131,11 @@
                                     <div class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">
                                         {{ \Illuminate\Support\Str::ucfirst($transaction->payment_method) }}
                                     </div>
+                                    @if(isset($transaction->complaint))
+                                        <div class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300">
+                                            Complained
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                             @forelse($transaction->items as $item)
@@ -141,7 +146,8 @@
                             @empty
                             @endforelse
                             <div class="flex items-center justify-between gap-x-2 mt-4 lg:mt-6">
-                                <div class="font-bold text-base sm:text-lg">Rp. {{ $transaction->total_price + $transaction->delivery_fee }}</div>
+                                <div class="font-bold text-base sm:text-lg">
+                                    Rp. {{ $transaction->total_price + $transaction->delivery_fee }}</div>
                                 <div class="flex items-center gap-x-2">
                                     <div>
                                         @if($transaction->status == 'unpaid')
@@ -221,11 +227,11 @@
                                                                         <option value="finish" {{ $transaction->status == 'finish' ? 'selected' : null }}>
                                                                             Finish
                                                                         </option>
-{{--                                                                        @if($transaction->status == 'paid')--}}
-{{--                                                                            <option value="finish">--}}
-{{--                                                                                Finish--}}
-{{--                                                                            </option>--}}
-{{--                                                                        @endif--}}
+                                                                        {{--                                                                        @if($transaction->status == 'paid')--}}
+                                                                        {{--                                                                            <option value="finish">--}}
+                                                                        {{--                                                                                Finish--}}
+                                                                        {{--                                                                            </option>--}}
+                                                                        {{--                                                                        @endif--}}
                                                                     </select>
                                                                 </div>
                                                             </div>

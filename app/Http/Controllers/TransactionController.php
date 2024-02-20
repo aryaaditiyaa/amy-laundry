@@ -147,7 +147,7 @@ class TransactionController extends Controller
     {
         $title = 'Transaction Detail';
 
-        $transaction->load(['user', 'items.product']);
+        $transaction->load(['user', 'items.product', 'complaint']);
         $transaction->loadSum('items as total_price', 'price');
 
         return view('pages.transaction.show', compact('title', 'transaction'));

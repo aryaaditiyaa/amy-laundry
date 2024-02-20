@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\Transaction;
+use App\Models\TransactionComplaint;
 use App\Models\TransactionHistory;
 use App\Models\TransactionItem;
 use Illuminate\Console\Command;
@@ -30,6 +31,7 @@ class DeleteAllTransactionCommand extends Command
     {
         TransactionItem::query()->delete();
         TransactionHistory::query()->delete();
+        TransactionComplaint::query()->delete();
         Transaction::query()->delete();
 
         $this->info('Deleted successfully');

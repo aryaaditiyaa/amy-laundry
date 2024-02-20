@@ -50,4 +50,9 @@ class Transaction extends Model
     {
         return $this->belongsTo(User::class, 'created_by', 'id');
     }
+
+    public function complaint(): HasOne
+    {
+        return $this->hasOne(TransactionComplaint::class);
+    }
 }

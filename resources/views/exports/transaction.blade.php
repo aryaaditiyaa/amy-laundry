@@ -10,6 +10,7 @@
         <td>Customer Email</td>
         <td>Customer Phone Number</td>
         <td>Status</td>
+        <td>Complaint</td>
         <td>Payment Method</td>
         <td>Created At</td>
         <td>Created By</td>
@@ -25,6 +26,7 @@
             <td>{{ $item->user?->email }}</td>
             <td>{{ $item->user?->phone_number }}</td>
             <td>{{ $item->status }}</td>
+            <td>{{ $item->complaint?->description }}</td>
             <td>{{ $item->payment_method }}</td>
             <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d-m-Y H:i') }}</td>
             <td>{{ $item->creator_name }}</td>
@@ -32,7 +34,7 @@
         </tr>
     @endforeach
     <tr>
-        <td colspan="9" style="text-align: center;font-weight: bold">Total</td>
+        <td colspan="10" style="text-align: center;font-weight: bold">Total</td>
         <td style="font-weight: bold">{{ $transactions->sum('total_price') }}</td>
     </tr>
     </tbody>
